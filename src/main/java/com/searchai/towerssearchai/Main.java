@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class Main extends Application {
+	public static void main(String[] args) {
+		launch();
+	}
 	@Override
 	public void start(Stage stage) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("towersGui.fxml"));
@@ -16,9 +19,5 @@ public class Main extends Application {
 		stage.setTitle("Towers Search Algorithms!");
 		stage.setScene(scene);
 		stage.show();
-	}
-
-	public static void main(String[] args) {
-		launch();
 	}
 }

@@ -9,10 +9,13 @@ import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
+import java.util.ArrayList;
+
 public class TowersFXMLController {
 
 	@FXML
 	public StackPane parent_main_scene;
+	private ArrayList<Integer> finalPath = new ArrayList<>();
 	@FXML
 	private Pane main_pane;
 
@@ -40,10 +43,15 @@ public class TowersFXMLController {
 	@FXML
 	private Ellipse right_tower_support;
 
-
-
 	@FXML
-	public void init_search(ActionEvent event) { // you really put "ActionEvent" on mouse release lol, anyways i made it on action now so its not giving argument mismatch error
-		
+	public void init_search(
+			ActionEvent event) { // you really put "ActionEvent" on mouse release lol, anyways i made it on action now so its not giving argument mismatch error
+
+		finalPath = Algorithms.DepthSearch(1);
+
+		for (int i = 0; i < finalPath.size(); i++) {
+			System.out.println(finalPath.get(i));
+		}
+
 	}
 }

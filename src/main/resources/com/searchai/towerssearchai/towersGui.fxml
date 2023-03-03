@@ -5,36 +5,46 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Ellipse?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-
-<StackPane fx:id="parent_main_scene" style="-fx-background-color: FFEC51;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.searchai.towerssearchai.TowersFXMLController">
+<?import javafx.scene.shape.*?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent_main_scene" style="-fx-background-color: FFEC51;"
+           xmlns="http://javafx.com/javafx/19" fx:controller="com.searchai.towerssearchai.TowersFXMLController">
     <children>
-        <Pane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFEC51;">
+        <Pane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+              prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFEC51;">
             <children>
-                <Ellipse fx:id="right_tower_support" fill="#fffbdb" layoutX="408.0" layoutY="200.0" radiusX="50.0" radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
+                <Ellipse fx:id="right_tower_support" fill="#fffbdb" layoutX="408.0" layoutY="200.0" radiusX="50.0"
+                         radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
-                        <Point3D x="90.0" z="1.0" />
+                        <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
                 </Ellipse>
-                <Ellipse fx:id="middle_tower_support" fill="#fffbdb" layoutX="300.0" layoutY="200.0" radiusX="50.0" radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
+                <Ellipse fx:id="middle_tower_support" fill="#fffbdb" layoutX="300.0" layoutY="200.0" radiusX="50.0"
+                         radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
-                        <Point3D x="90.0" z="1.0" />
+                        <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
                 </Ellipse>
-                <Ellipse fx:id="left_tower_support" fill="#fffbdb" layoutX="189.0" layoutY="200.0" radiusX="50.0" radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
+                <Ellipse fx:id="left_tower_support" fill="#fffbdb" layoutX="189.0" layoutY="200.0" radiusX="50.0"
+                         radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
-                        <Point3D x="90.0" z="1.0" />
+                        <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
                 </Ellipse>
-                <ComboBox fx:id="algorithm_comboBox" layoutX="227.0" layoutY="273.0" prefWidth="150.0" promptText="Select an algorithm" styleClass="dropDowner" stylesheets="@application.css" />
-                <Button fx:id="search_button" layoutX="231.0" layoutY="221.0" mnemonicParsing="false" onAction="#init_search" prefHeight="46.0" prefWidth="143.0" styleClass="initiateButton" stylesheets="@application.css" text="Initiate search" textAlignment="CENTER" />
-                <Line fx:id="middle_tower_b" endX="50.0" layoutX="310.0" layoutY="138.0" rotate="90.0" startX="-70.0" strokeLineCap="ROUND" strokeWidth="4.0" />
-                <Line fx:id="right_tower_c" endX="50.0" layoutX="418.0" layoutY="138.0" rotate="90.0" startX="-70.0" strokeLineCap="ROUND" strokeWidth="4.0" />
-                <Line fx:id="left_tower_a" endX="50.0" layoutX="199.0" layoutY="138.0" rotate="90.0" startX="-70.0" strokeLineCap="ROUND" strokeWidth="4.0" />
-                <Rectangle fx:id="large_box_L" arcHeight="5.0" arcWidth="5.0" fill="#7776bc" height="25.0" layoutX="134.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="110.0" />
-                <Rectangle fx:id="small_box_S" arcHeight="5.0" arcWidth="5.0" fill="#ff674d" height="25.0" layoutX="160.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="55.0" />
+                <ComboBox fx:id="algorithm_comboBox" layoutX="227.0" layoutY="273.0" prefWidth="150.0"
+                          promptText="Select an algorithm" styleClass="dropDowner" stylesheets="@application.css"/>
+                <Button fx:id="search_button" layoutX="231.0" layoutY="221.0" mnemonicParsing="false"
+                        onAction="#init_search" prefHeight="46.0" prefWidth="143.0" styleClass="initiateButton"
+                        stylesheets="@application.css" text="Initiate search" textAlignment="CENTER"/>
+                <Line fx:id="middle_tower_b" endX="50.0" layoutX="310.0" layoutY="138.0" rotate="90.0" startX="-70.0"
+                      strokeLineCap="ROUND" strokeWidth="4.0"/>
+                <Line fx:id="right_tower_c" endX="50.0" layoutX="418.0" layoutY="138.0" rotate="90.0" startX="-70.0"
+                      strokeLineCap="ROUND" strokeWidth="4.0"/>
+                <Line fx:id="left_tower_a" endX="50.0" layoutX="199.0" layoutY="138.0" rotate="90.0" startX="-70.0"
+                      strokeLineCap="ROUND" strokeWidth="4.0"/>
+                <Rectangle fx:id="large_box_L" arcHeight="5.0" arcWidth="5.0" fill="#7776bc" height="25.0"
+                           layoutX="134.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="110.0"/>
+                <Rectangle fx:id="small_box_S" arcHeight="5.0" arcWidth="5.0" fill="#ff674d" height="25.0"
+                           layoutX="160.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="55.0"/>
             </children>
         </Pane>
     </children>
