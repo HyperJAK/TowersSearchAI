@@ -43,7 +43,7 @@ public class TowersFXMLController {
 
 
 	@FXML
-	void init_search(ActionEvent event) {
-
+	public void init_search(ActionEvent event) { // you really put "ActionEvent" on mouse release lol, anyways i made it on action now so its not giving argument mismatch error
+		
 	}
 }
