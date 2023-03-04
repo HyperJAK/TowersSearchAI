@@ -5,5 +5,6 @@ module com.searchai.towerssearchai {
 	requires org.controlsfx.controls;
 
 	opens com.searchai.towerssearchai to javafx.fxml;
+
 	exports com.searchai.towerssearchai;
 }

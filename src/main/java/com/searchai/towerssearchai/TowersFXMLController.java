@@ -1,4 +1,5 @@
 package com.searchai.towerssearchai;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,8 +45,7 @@ public class TowersFXMLController {
 	private Ellipse right_tower_support;
 
 	@FXML
-	public void init_search(
-			ActionEvent event) { // you really put "ActionEvent" on mouse release lol, anyways i made it on action now so its not giving argument mismatch error
+	public void init_search(ActionEvent event) {
 
 		finalPath = Algorithms.DepthSearch(1);
 
