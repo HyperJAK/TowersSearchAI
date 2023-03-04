@@ -1,40 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Point3D?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.*?>
-<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent_main_scene" style="-fx-background-color: FFEC51;"
-           xmlns="http://javafx.com/javafx/19" fx:controller="com.searchai.towerssearchai.TowersFXMLController">
+<?import javafx.scene.text.Text?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent_main_scene" style="-fx-background-color: #007ACC;"
+           xmlns="http://javafx.com/javafx/8" fx:controller="com.searchai.towerssearchai.TowersFXMLController">
     <children>
         <Pane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-              prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FFEC51;">
+              prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #007ACC;">
             <children>
                 <Ellipse fx:id="right_tower_support" fill="#fffbdb" layoutX="408.0" layoutY="200.0" radiusX="50.0"
                          radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
                         <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Ellipse>
                 <Ellipse fx:id="middle_tower_support" fill="#fffbdb" layoutX="300.0" layoutY="200.0" radiusX="50.0"
                          radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
                         <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Ellipse>
                 <Ellipse fx:id="left_tower_support" fill="#fffbdb" layoutX="189.0" layoutY="200.0" radiusX="50.0"
                          radiusY="80.0" rotate="80.0" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="3.0">
                     <rotationAxis>
                         <Point3D x="90.0" z="1.0"/>
                     </rotationAxis>
+                    <effect>
+                        <DropShadow/>
+                    </effect>
                 </Ellipse>
-                <ComboBox fx:id="algorithm_comboBox" layoutX="227.0" layoutY="273.0" prefWidth="150.0"
-                          promptText="Select an algorithm" styleClass="dropDowner" stylesheets="@application.css"/>
-                <Button fx:id="search_button" layoutX="231.0" layoutY="221.0" mnemonicParsing="false"
+                <Button fx:id="search_button" disable="false" layoutX="229.0" layoutY="275.0" mnemonicParsing="false"
                         onAction="#init_search" prefHeight="46.0" prefWidth="143.0" styleClass="initiateButton"
-                        stylesheets="@application.css" text="Initiate search" textAlignment="CENTER"/>
+                        stylesheets="@application.css" text="Initiate search" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Button>
                 <Line fx:id="middle_tower_b" endX="50.0" layoutX="310.0" layoutY="138.0" rotate="90.0" startX="-70.0"
                       strokeLineCap="ROUND" strokeWidth="4.0"/>
                 <Line fx:id="right_tower_c" endX="50.0" layoutX="418.0" layoutY="138.0" rotate="90.0" startX="-70.0"
@@ -45,6 +57,46 @@
                            layoutX="134.0" layoutY="173.0" stroke="BLACK" strokeType="INSIDE" width="110.0"/>
                 <Rectangle fx:id="small_box_S" arcHeight="5.0" arcWidth="5.0" fill="#ff674d" height="25.0"
                            layoutX="160.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="55.0"/>
+                <ChoiceBox fx:id="start_pos_choices" layoutX="428.0" layoutY="238.0" prefWidth="150.0">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </ChoiceBox>
+                <Text layoutX="440.0" layoutY="228.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Starting position (1-&gt;9)"/>
+                <Text layoutX="446.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Target(1-&gt;9)"/>
+                <ChoiceBox fx:id="target_pos_choices" layoutX="428.0" layoutY="292.0" prefWidth="150.0">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </ChoiceBox>
+                <Button id="left_transition_button" contentDisplay="CENTER" layoutX="243.0" layoutY="231.0"
+                        mnemonicParsing="false" prefHeight="40.0" prefWidth="41.0" stylesheets="@application.css"
+                        textAlignment="CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Button>
+                <Button id="right_transition_button" layoutX="319.0" layoutY="231.0" mnemonicParsing="false"
+                        prefHeight="40.0" prefWidth="41.0" stylesheets="@application.css" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Button>
+                <TextArea fx:id="path_textBox" layoutX="59.0" layoutY="333.0" prefHeight="95.0" prefWidth="519.0"
+                          promptText="Final path">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </TextArea>
+                <ChoiceBox fx:id="algorithm_choiceBox" layoutX="59.0" layoutY="276.0" prefWidth="150.0">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </ChoiceBox>
+                <Text layoutX="73.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an algorithm"/>
+                <Text layoutX="441.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                      text="Target position (1-&gt;9)"/>
             </children>
         </Pane>
     </children>

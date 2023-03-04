@@ -17,3 +17,19 @@
     -fx-background-color: #4974A5;
     -fx-effect: dropshadow(three-pass-box, rgba(65, 100, 140, 0.8), 10, 0, 0, 0);
 }
+
+#right_transition_button {
+    -fx-background-image: url("right_arrow.png");
+    -fx-background-repeat: none;
+    -fx-background-size: cover;
+    -fx-min-width: 30px;
+    -fx-min-height: 40px;
+}
+
+#left_transition_button {
+    -fx-background-image: url("left_arrow.png");
+    -fx-background-repeat: none;
+    -fx-background-size: cover;
+    -fx-min-width: 30px;
+    -fx-min-height: 40px;
+}
