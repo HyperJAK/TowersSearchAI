@@ -7,8 +7,10 @@ import java.util.Stack;
 
 public class Algorithms {
 
-	private static final int[][] fullMap = {{0, 1, 1, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 0, 0, 0, 0, 1, 0}, {1, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 1, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1, 1}, {0, 1, 0, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0, 1, 1, 0}};
+	private static final int[][] fullMap = { { 0, 1, 1, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 1, 0 },
+			{ 1, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 1, 1, 0, 0 }, { 0, 0, 0, 1, 0, 1, 0, 0, 0 },
+			{ 0, 0, 1, 1, 1, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0, 0, 1, 1 }, { 0, 1, 0, 0, 0, 0, 1, 0, 1 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 0 } };
 
 	// Basiclally algorithm searches the matrix startes from first row representing
 	// the first state and in that it finds the 1
@@ -23,14 +25,15 @@ public class Algorithms {
 			path.add(startAt);
 			return path;
 		} else {
-			//Adds starting point then removes a value from it for the array fullMap to work
+			// Adds starting point then removes a value from it for the array fullMap to
+			// work
 			path.add(startAt);
 			startAt -= 1;
 		}
 		while (!path.contains(goal)) {
 			Stack<Integer> stateChildren = new Stack<>();
 
-			//If children in path it skips adding them
+			// If children in path it skips adding them
 			for (int i = 0; i < 9; i++) {
 				if (fullMap[startAt][i] == 1) {
 					if (!path.contains(i + 1)) {
@@ -39,7 +42,7 @@ public class Algorithms {
 				}
 			}
 
-			//Adds newwest starting point
+			// Adds newwest starting point
 			int newStartPoint = stateChildren.pop();
 			path.add(newStartPoint);
 			startAt = newStartPoint - 1;
@@ -79,6 +82,3 @@ public class Algorithms {
 	}
 
 }
-
-
-
