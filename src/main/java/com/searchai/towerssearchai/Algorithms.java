@@ -1,16 +1,8 @@
 package com.searchai.towerssearchai;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Algorithms {
-
-	private static final int[][] fullMap = { { 0, 1, 1, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 1, 0 },
-			{ 1, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 1, 1, 0, 0 }, { 0, 0, 0, 1, 0, 1, 0, 0, 0 },
-			{ 0, 0, 1, 1, 1, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0, 0, 1, 1 }, { 0, 1, 0, 0, 0, 0, 1, 0, 1 },
-			{ 0, 0, 0, 0, 0, 0, 1, 1, 0 } };
 
 	// Basiclally algorithm searches the matrix startes from first row representing
 	// the first state and in that it finds the 1
@@ -18,7 +10,25 @@ public class Algorithms {
 	// 1 that it chose from first row to get the new row that it will
 	// operate on and adds that last 1 to a path list so that if it comes again to
 	// it it skips it and takes another element
-	public static ArrayList<Integer> DepthSearch(int startAt, int goal) {
+	private static final int[][] fullMap = {{0, 1, 1, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 0, 0, 0, 0, 1, 0}, {1, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 0, 1, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1, 1}, {0, 1, 0, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0, 1, 1, 0}};
+
+	/*For thing u were saying for A*, I was doing this for best first but seems way it happened currently is simpler*/
+	/*private static final int[][] fullMap_informed = {
+			{ 0, 3, 4, 0, 0, 0, 0, 0, 0 },
+			{ 3, 0, 3, 0, 0, 0, 0, 2, 0 },
+			{ 4, 3, 0, 0, 0, 4, 0, 0, 0 },
+			{ 0, 0, 0, 0, 3, 3, 2, 0, 0 },
+			{ 0, 0, 0, 3, 0, 4, 0, 0, 0 },
+			{ 0, 0, 4, 3, 4, 0, 0, 0, 0 },
+			{ 0, 0, 0, 2, 0, 0, 0, 2, 1 },
+			{ 0, 2, 0, 0, 0, 0, 2, 0, 1 },
+			{ 0, 0, 0, 0, 0, 0, 1, 1, 0 } };*/
+
+	private static final int totalStates = 9;
+
+	//Uninformed searches
+	public static ArrayList<Integer> DepthFirst(int startAt, int goal) {
 		ArrayList<Integer> path = new ArrayList<>();
 
 		if (startAt == goal) {
@@ -30,11 +40,11 @@ public class Algorithms {
 			path.add(startAt);
 			startAt -= 1;
 		}
+		Stack<Integer> stateChildren = new Stack<>();
 		while (!path.contains(goal)) {
-			Stack<Integer> stateChildren = new Stack<>();
 
 			// If children in path it skips adding them
-			for (int i = 0; i < 9; i++) {
+			for (int i = 0; i < totalStates; i++) {
 				if (fullMap[startAt][i] == 1) {
 					if (!path.contains(i + 1)) {
 						stateChildren.push(i + 1);
@@ -63,6 +73,7 @@ public class Algorithms {
 			startAt -= 1;
 		}
 
+		//This is stateChildren
 		Queue<Integer> queue = new ArrayDeque<>();
 		queue.add(startAt + 1);
 
@@ -73,12 +84,52 @@ public class Algorithms {
 			}
 			path.add(queueHead);
 
-			for (int i = 0; i < 9; i++) {
+			for (int i = 0; i < totalStates; i++) {
 				if (fullMap[queueHead - 1][i] == 1)
 					queue.add(i + 1);
 			}
 		}
 		return path; // now return the path.
+	}
+
+	//Informed searches
+	public static ArrayList<Integer> BestFirst(int startAt, int goal) {
+
+		//From state 1 to 9 these are h functions
+		int[] heuristics = {3, 2, 3, 2, 3, 3, 1, 1, 0};
+		ArrayList<Integer> path = new ArrayList<>();
+
+		if (startAt == goal) {
+			path.add(startAt);
+			return path;
+		} else {
+			// Adds starting point then removes a value from it for the array fullMap to
+			// work
+			path.add(startAt);
+			startAt -= 1;
+		}
+
+		while (!path.contains(goal)) {
+			/*In this line of code, integer is a parameter name that represents each element of the PriorityQueue. Specifically, stateChildren is a priority queue that stores Integer objects, and the Comparator.comparingInt() method is used to specify that the priority of each element should be based on the corresponding heuristic value.*/
+			PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> heuristics[integer - 1]));
+
+			// If children in path it skips adding them
+			for (int i = 0; i < totalStates; i++) {
+				if (fullMap[startAt][i] == 1) {
+					if (!path.contains(i + 1)) {
+						stateChildren.add(i + 1);
+					}
+				}
+			}
+
+			// Adds newwest starting point
+			int newStartPoint = stateChildren.poll();
+			path.add(newStartPoint);
+			startAt = newStartPoint - 1;
+
+		}
+		return path;
+
 	}
 
 }
