@@ -90,7 +90,7 @@
         </Pane>
       <Pane fx:id="graphPane" maxHeight="434.0" maxWidth="430.0" prefHeight="200.0" prefWidth="200.0" styleClass="graphPane" stylesheets="@application.css" translateX="-280.0">
          <children>
-            <Circle fx:id="stateOne" fill="RED" layoutX="215.0" layoutY="45.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
+            <Circle fx:id="stateOne" fill="BLUE" layoutX="215.0" layoutY="45.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
             <Circle fx:id="stateTwo" fill="WHITE" layoutX="328.0" layoutY="107.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
             <Circle fx:id="stateThree" fill="WHITE" layoutX="390.0" layoutY="217.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
             <Circle fx:id="stateFour" fill="WHITE" layoutX="328.0" layoutY="327.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
@@ -98,7 +98,7 @@
             <Circle fx:id="stateSix" fill="WHITE" layoutX="107.0" layoutY="327.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
             <Circle fx:id="stateSeven" fill="WHITE" layoutX="45.0" layoutY="217.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
             <Circle fx:id="stateEight" fill="WHITE" layoutX="107.0" layoutY="107.0" radius="30.0" stroke="BLACK" strokeWidth="2.0" />
-            <Circle fx:id="stateNine" fill="GOLD" layoutX="215.0" layoutY="217.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="stateNine" fill="RED" layoutX="215.0" layoutY="217.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" />
             <Text layoutX="197.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State 1" textAlignment="CENTER" />
             <Text layoutX="310.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State 2" textAlignment="CENTER" />
             <Text layoutX="372.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="State 3" textAlignment="CENTER" />

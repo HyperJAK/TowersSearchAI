@@ -170,6 +170,19 @@ public class TowersFXMLController implements Initializable {
 		Animation(finalPath);
 	}
 
+	//to reset everything animation related
+	public void resetAnimation(){
+		stateOne.setFill(Color.BLUE);
+		stateTwo.setFill(Color.WHITE);
+		stateThree.setFill(Color.WHITE);
+		stateFour.setFill(Color.WHITE);
+		stateFive.setFill(Color.WHITE);
+		stateSix.setFill(Color.WHITE);
+		stateSeven.setFill(Color.WHITE);
+		stateEight.setFill(Color.WHITE);
+		stateNine.setFill(Color.RED);
+	}
+
 	// Graph Animation
 	private void GraphAnimation(ArrayList<Integer> path) {
 		switch (path.get(currentIteration)) {
@@ -236,6 +249,7 @@ public class TowersFXMLController implements Initializable {
 		// 8 ( B:3 , S:2 )
 		// 9 ( B:3 , S:3 )
 		int i = currentIteration;
+		resetAnimation();
 		GraphAnimation(path);
 		// now we get current position.
 		switch (path.get(i)) {
