@@ -125,7 +125,7 @@ public class Algorithms {
 			// If children in path it skips adding them
 			for (int i = 0; i < totalStates; i++) {
 				if (fullMap[startAt][i] == 1) {
-					if (!path.contains(i + 1)) {
+					if (!path.contains(i + 1) && !stateChildren.contains(i + 1)) {
 						stateChildren.add(i + 1);
 					}
 				}
@@ -146,7 +146,7 @@ public class Algorithms {
 		int[] heuristics = { 3, 2, 3, 2, 3, 3, 1, 1, 0 };
 		// From state 1 to 9 these are the g costs for each node
 		int[] gCost = { 0, 1, 1, 3, 3, 2, 3, 2, 3 };
-		int queueHead;
+		int stateChildrenHead;
 
 		ArrayList<Integer> path = new ArrayList<>();
 
@@ -161,14 +161,14 @@ public class Algorithms {
 		stateChildren.add(startAt + 1);
 
 		while (!path.contains(goal)) {
-			queueHead = stateChildren.poll();
-			if (path.contains(queueHead)) {
+			stateChildrenHead = stateChildren.poll();
+			if (path.contains(stateChildrenHead)) {
 				continue;
 			}
-			path.add(queueHead);
+			path.add(stateChildrenHead);
 
 			for (int i = 0; i < totalStates; i++) {
-				if (fullMap[queueHead - 1][i] == 1)
+				if (fullMap[stateChildrenHead - 1][i] == 1)
 					stateChildren.add(i + 1);
 			}
 		}
