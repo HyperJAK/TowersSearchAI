@@ -34,7 +34,7 @@
     -fx-min-height: 40px;
 }
 
-.graphPane{
-	-fx-background-color: rgba(255,255,255,0.3);
-	
+.graphPane {
+    -fx-background-color: rgba(255, 255, 255, 0.3);
+
 }

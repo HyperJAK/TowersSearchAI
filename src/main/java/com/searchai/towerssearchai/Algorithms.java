@@ -10,10 +10,8 @@ public class Algorithms {
 	// 1 that it chose from first row to get the new row that it will
 	// operate on and adds that last 1 to a path list so that if it comes again to
 	// it it skips it and takes another element
-	private static final int[][] fullMap = { { 0, 1, 1, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 1, 0 },
-			{ 1, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 1, 1, 0, 0 }, { 0, 0, 0, 1, 0, 1, 0, 0, 0 },
-			{ 0, 0, 1, 1, 1, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0, 0, 1, 1 }, { 0, 1, 0, 0, 0, 0, 1, 0, 1 },
-			{ 0, 0, 0, 0, 0, 0, 1, 1, 0 } };
+	private static final int[][] fullMap = {{0, 1, 1, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 0, 0, 0, 0, 1, 0}, {1, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 0, 1, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1, 1}, {0, 1, 0, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0, 1, 1, 0}};
 
 	/*
 	 * For thing u were saying for A*, I was doing this for best first but seems way
@@ -98,8 +96,17 @@ public class Algorithms {
 	public static ArrayList<Integer> BestFirst(int startAt, int goal) {
 
 		// From state 1 to 9 these are h functions
-		int[] heuristics = { 3, 2, 3, 2, 3, 3, 1, 1, 0 };
+		int[] heuristics = {3, 2, 3, 2, 3, 3, 1, 1, 0};
 		ArrayList<Integer> path = new ArrayList<>();
+		/*
+		 * In this line of code, integer is a parameter name that represents each
+		 * element of the PriorityQueue. Specifically, stateChildren is a priority queue
+		 * that stores Integer objects, and the Comparator.comparingInt() method is used
+		 * to specify that the priority of each element should be based on the
+		 * corresponding heuristic value.
+		 */
+
+		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> heuristics[integer - 1]));
 
 		if (startAt == goal) {
 			path.add(startAt);
@@ -112,20 +119,11 @@ public class Algorithms {
 		}
 
 		while (!path.contains(goal)) {
-			/*
-			 * In this line of code, integer is a parameter name that represents each
-			 * element of the PriorityQueue. Specifically, stateChildren is a priority queue
-			 * that stores Integer objects, and the Comparator.comparingInt() method is used
-			 * to specify that the priority of each element should be based on the
-			 * corresponding heuristic value.
-			 */
-			PriorityQueue<Integer> stateChildren = new PriorityQueue<>(
-					Comparator.comparingInt(integer -> heuristics[integer - 1]));
-
+			stateChildren.clear();
 			// If children in path it skips adding them
 			for (int i = 0; i < totalStates; i++) {
 				if (fullMap[startAt][i] == 1) {
-					if (!path.contains(i + 1) && !stateChildren.contains(i + 1)) {
+					if (!path.contains(i + 1)) {
 						stateChildren.add(i + 1);
 					}
 				}
@@ -143,9 +141,9 @@ public class Algorithms {
 
 	public static ArrayList<Integer> Astar(int startAt, int goal) {
 		// From state 1 to 9 these are h functions
-		int[] heuristics = { 3, 2, 3, 2, 3, 3, 1, 1, 0 };
+		int[] heuristics = {3, 2, 3, 2, 3, 3, 1, 1, 0};
 		// From state 1 to 9 these are the g costs for each node
-		int[] gCost = { 0, 1, 1, 3, 3, 2, 3, 2, 3 };
+		int[] gCost = {0, 1, 1, 3, 3, 2, 3, 2, 3};
 		int stateChildrenHead;
 
 		ArrayList<Integer> path = new ArrayList<>();
@@ -156,8 +154,7 @@ public class Algorithms {
 		} else {
 			startAt -= 1;
 		}
-		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(
-				Comparator.comparingInt(integer -> (heuristics[integer - 1]) + gCost[integer - 1]));
+		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> (heuristics[integer - 1]) + gCost[integer - 1]));
 		stateChildren.add(startAt + 1);
 
 		while (!path.contains(goal)) {
