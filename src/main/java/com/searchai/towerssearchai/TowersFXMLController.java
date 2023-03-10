@@ -7,8 +7,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.effect.BoxBlur;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
@@ -51,6 +55,9 @@ public class TowersFXMLController implements Initializable {
 	private int selected_start;
 
 	private boolean choiceBoxes_selected = false;
+	
+	@FXML
+	private Pane graphPane;
 
 	@FXML
 	private Button search_button;
@@ -72,6 +79,25 @@ public class TowersFXMLController implements Initializable {
 	private Ellipse right_tower_support;
 	@FXML
 	private Button testButton;
+	
+	@FXML
+	private Circle stateOne;
+	@FXML
+	private Circle stateTwo;
+	@FXML
+	private Circle stateThree;
+	@FXML
+	private Circle stateFour;
+	@FXML
+	private Circle stateFive;
+	@FXML
+	private Circle stateSix;
+	@FXML
+	private Circle stateSeven;
+	@FXML
+	private Circle stateEight;
+	@FXML
+	private Circle stateNine;
 
 	// Method used to initialize the Controller class
 	// (Its automatically used by the fxml file when we call it in main) and is
@@ -100,7 +126,7 @@ public class TowersFXMLController implements Initializable {
 					finalPath = Algorithms.BestFirst(selected_start, selected_target);
 				}
 				case "a* search" -> {
-
+					finalPath = Algorithms.Astar(selected_start, selected_target);
 				}
 
 			}
@@ -143,6 +169,41 @@ public class TowersFXMLController implements Initializable {
 		Animation(finalPath);
 	}
 
+	// Graph Animation
+	private void GraphAnimation(ArrayList<Integer> path) {
+			switch(path.get(currentIteration)) {
+			case 1: stateOne.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateOne.setFill(Color.YELLOW);
+				break;
+			case 2: stateTwo.setStyle("-dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateTwo.setFill(Color.YELLOW);
+				break;
+			case 3: stateThree.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateThree.setFill(Color.YELLOW);
+				break;
+			case 4: stateFour.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateFour.setFill(Color.YELLOW);
+				break;
+			case 5: stateFive.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateFive.setFill(Color.YELLOW);
+				break;
+			case 6: stateSix.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateSix.setFill(Color.YELLOW);
+				break;
+			case 7: stateSeven.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateSeven.setFill(Color.YELLOW);
+				break;
+			case 8: stateEight.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateEight.setFill(Color.YELLOW);
+				break;
+			case 9: stateNine.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+					stateNine.setFill(Color.YELLOW);
+				break;
+			default: System.out.println("bruh");	
+			}
+		}
+
+	
 	// its a BIG code, don't panic
 	private void Animation(ArrayList<Integer> path) throws InterruptedException {
 
@@ -165,6 +226,7 @@ public class TowersFXMLController implements Initializable {
 		// 8 ( B:3 , S:2 )
 		// 9 ( B:3 , S:3 )
 		int i = currentIteration;
+		GraphAnimation(path);
 		// now we get current position.
 		switch (path.get(i)) {
 			case 1:
@@ -375,6 +437,9 @@ public class TowersFXMLController implements Initializable {
 				currentIteration++;
 				if (currentIteration != path.size() - 1)
 					Animation(path);
+				else {
+					GraphAnimation(path);
+				}
 			} catch (InterruptedException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
