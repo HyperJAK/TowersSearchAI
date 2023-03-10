@@ -10,8 +10,17 @@ public class Algorithms {
 	// 1 that it chose from first row to get the new row that it will
 	// operate on and adds that last 1 to a path list so that if it comes again to
 	// it it skips it and takes another element
-	private static final int[][] fullMap = {{0, 1, 1, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 0, 0, 0, 0, 1, 0}, {1, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 1, 0, 0},
-			{0, 0, 0, 1, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1, 1}, {0, 1, 0, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0, 1, 1, 0}};
+	private static final int[][] fullMap = {
+			{0, 1, 1, 0, 0, 0, 0, 0, 0},
+			{1, 0, 1, 0, 0, 0, 0, 1, 0},
+			{1, 1, 0, 0, 0, 1, 0, 0, 0},
+			{0, 0, 0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 0, 1, 0, 1, 0, 0, 0},
+			{0, 0, 1, 1, 1, 0, 0, 0, 0},
+			{0, 0, 0, 1, 0, 0, 0, 1, 1},
+			{0, 1, 0, 0, 0, 0, 1, 0, 1},
+			{0, 0, 0, 0, 0, 0, 1, 1, 0}
+		};
 
 	/*For thing u were saying for A*, I was doing this for best first but seems way it happened currently is simpler*/
 	/*private static final int[][] fullMap_informed = {
@@ -130,6 +139,39 @@ public class Algorithms {
 		}
 		return path;
 
+	}
+	
+	public static ArrayList<Integer> Astar(int startAt, int goal){
+		//From state 1 to 9 these are h functions
+		int[] heuristics = {3, 2, 3, 2, 3, 3, 1, 1, 0};
+		//From state 1 to 9 these are the g costs for each node
+		int[] gCost = {0, 1, 1, 3, 3, 2, 3, 2, 3};
+		int queueHead;
+		
+		ArrayList<Integer> path = new ArrayList<>();
+		
+		if (startAt == goal) {
+			path.add(startAt);
+			return path;
+		} else {
+			startAt -= 1;
+		}
+		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> (heuristics[integer - 1])+gCost[integer - 1]));
+		stateChildren.add(startAt+1);
+		
+		while (!path.contains(goal)) {
+			queueHead = stateChildren.poll();
+			if (path.contains(queueHead)) {
+				continue;
+			}
+			path.add(queueHead);
+
+			for (int i = 0; i < totalStates; i++) {
+				if (fullMap[queueHead - 1][i] == 1)
+					stateChildren.add(i + 1);
+			}
+		}
+		return path; // now return the path.
 	}
 
 }
