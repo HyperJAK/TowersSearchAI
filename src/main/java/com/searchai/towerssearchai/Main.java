@@ -19,7 +19,7 @@ public class Main extends Application {
 
 		StackPane stack = FXMLLoader.load(new URL(Main.class.getResource("towersGui.fxml").toExternalForm()));
 
-		Scene scene = new Scene(stack, 600, 500);
+		Scene scene = new Scene(stack, 1000, 500);
 		stage.setTitle("Towers Search Algorithms!");
 		stage.setScene(scene);
 		stage.show();
