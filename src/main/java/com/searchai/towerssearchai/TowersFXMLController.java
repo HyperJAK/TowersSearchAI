@@ -55,7 +55,7 @@ public class TowersFXMLController implements Initializable {
 	private int selected_start;
 
 	private boolean choiceBoxes_selected = false;
-	
+
 	@FXML
 	private Pane graphPane;
 
@@ -79,7 +79,7 @@ public class TowersFXMLController implements Initializable {
 	private Ellipse right_tower_support;
 	@FXML
 	private Button testButton;
-	
+
 	@FXML
 	private Circle stateOne;
 	@FXML
@@ -116,18 +116,18 @@ public class TowersFXMLController implements Initializable {
 		// Checks if the 3 choiceboxes are selected else displays in textbox a message
 		if (choiceBoxes_selected) {
 			switch (selected_algorithm.toLowerCase()) {
-				case "breadth search" -> {
-					finalPath = Algorithms.BreadthFirst(selected_start, selected_target);
-				}
-				case "depth search" -> {
-					finalPath = Algorithms.DepthFirst(selected_start, selected_target);
-				}
-				case "best-first search" -> {
-					finalPath = Algorithms.BestFirst(selected_start, selected_target);
-				}
-				case "a* search" -> {
-					finalPath = Algorithms.Astar(selected_start, selected_target);
-				}
+			case "breadth search" -> {
+				finalPath = Algorithms.BreadthFirst(selected_start, selected_target);
+			}
+			case "depth search" -> {
+				finalPath = Algorithms.DepthFirst(selected_start, selected_target);
+			}
+			case "best-first search" -> {
+				finalPath = Algorithms.BestFirst(selected_start, selected_target);
+			}
+			case "a* search" -> {
+				finalPath = Algorithms.Astar(selected_start, selected_target);
+			}
 
 			}
 			if (!finalPath.isEmpty()) {
@@ -141,7 +141,8 @@ public class TowersFXMLController implements Initializable {
 
 	// This function initialises the choice boxes by filling them with options
 	public void initChoiceBoxes() {
-		if (algorithm_choiceBox.getValue() != null && start_pos_choices.getValue() != null && target_pos_choices.getValue() != null) {
+		if (algorithm_choiceBox.getValue() != null && start_pos_choices.getValue() != null
+				&& target_pos_choices.getValue() != null) {
 			selected_algorithm = algorithm_choiceBox.getValue();
 			selected_start = start_pos_choices.getValue();
 			selected_target = target_pos_choices.getValue();
@@ -153,8 +154,8 @@ public class TowersFXMLController implements Initializable {
 	// This function is responsible for writing the path after each algorithm is
 	// finished computing
 	private void writePath() {
-		StringBuilder organize_paths = new StringBuilder(
-				"Answer: (ALGORITHM: " + selected_algorithm + " / START: " + selected_start + " -> END: " + selected_target + "\n");
+		StringBuilder organize_paths = new StringBuilder("Answer: (ALGORITHM: " + selected_algorithm + " / START: "
+				+ selected_start + " -> END: " + selected_target + "\n");
 		for (int i = 0; i < finalPath.size(); i++) {
 			organize_paths.append(" -> State: ").append(finalPath.get(i));
 		}
@@ -171,39 +172,48 @@ public class TowersFXMLController implements Initializable {
 
 	// Graph Animation
 	private void GraphAnimation(ArrayList<Integer> path) {
-			switch(path.get(currentIteration)) {
-			case 1: stateOne.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateOne.setFill(Color.YELLOW);
-				break;
-			case 2: stateTwo.setStyle("-dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateTwo.setFill(Color.YELLOW);
-				break;
-			case 3: stateThree.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateThree.setFill(Color.YELLOW);
-				break;
-			case 4: stateFour.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateFour.setFill(Color.YELLOW);
-				break;
-			case 5: stateFive.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateFive.setFill(Color.YELLOW);
-				break;
-			case 6: stateSix.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateSix.setFill(Color.YELLOW);
-				break;
-			case 7: stateSeven.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateSeven.setFill(Color.YELLOW);
-				break;
-			case 8: stateEight.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateEight.setFill(Color.YELLOW);
-				break;
-			case 9: stateNine.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
-					stateNine.setFill(Color.YELLOW);
-				break;
-			default: System.out.println("bruh");	
-			}
+		switch (path.get(currentIteration)) {
+		case 1:
+			stateOne.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateOne.setFill(Color.YELLOW);
+			break;
+		case 2:
+			stateTwo.setStyle("-dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateTwo.setFill(Color.YELLOW);
+			break;
+		case 3:
+			stateThree.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateThree.setFill(Color.YELLOW);
+			break;
+		case 4:
+			stateFour.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateFour.setFill(Color.YELLOW);
+			break;
+		case 5:
+			stateFive.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateFive.setFill(Color.YELLOW);
+			break;
+		case 6:
+			stateSix.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateSix.setFill(Color.YELLOW);
+			break;
+		case 7:
+			stateSeven.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateSeven.setFill(Color.YELLOW);
+			break;
+		case 8:
+			stateEight.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateEight.setFill(Color.YELLOW);
+			break;
+		case 9:
+			stateNine.setStyle("dropshadow(three-pass-box, rgba(255, 255, 0, 0.8), 10, 0, 0, 0);");
+			stateNine.setFill(Color.YELLOW);
+			break;
+		default:
+			System.out.println("bruh");
 		}
+	}
 
-	
 	// its a BIG code, don't panic
 	private void Animation(ArrayList<Integer> path) throws InterruptedException {
 
@@ -229,121 +239,121 @@ public class TowersFXMLController implements Initializable {
 		GraphAnimation(path);
 		// now we get current position.
 		switch (path.get(i)) {
-			case 1:
-				currentPosition_Small = 1;
-				currentPosition_Big = 0;
-				currentTower_Small = 1;
-				currentTower_Big = 1;
-				break;
-			case 2:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 2;
-				currentTower_Big = 1;
-				break;
-			case 3:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 3;
-				currentTower_Big = 1;
-				break;
-			case 4:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 1;
-				currentTower_Big = 2;
-				break;
-			case 5:
-				currentPosition_Small = 1;
-				currentPosition_Big = 0;
-				currentTower_Small = 2;
-				currentTower_Big = 2;
-				break;
-			case 6:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 3;
-				currentTower_Big = 2;
-				break;
-			case 7:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 1;
-				currentTower_Big = 3;
-				break;
-			case 8:
-				currentPosition_Small = 0;
-				currentPosition_Big = 0;
-				currentTower_Small = 2;
-				currentTower_Big = 3;
-				break;
-			case 9:
-				currentPosition_Small = 1;
-				currentPosition_Big = 0;
-				currentTower_Small = 3;
-				currentTower_Big = 3;
-				break;
-			default:
-				System.out.println("defaultDance.exe1");
+		case 1:
+			currentPosition_Small = 1;
+			currentPosition_Big = 0;
+			currentTower_Small = 1;
+			currentTower_Big = 1;
+			break;
+		case 2:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 2;
+			currentTower_Big = 1;
+			break;
+		case 3:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 3;
+			currentTower_Big = 1;
+			break;
+		case 4:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 1;
+			currentTower_Big = 2;
+			break;
+		case 5:
+			currentPosition_Small = 1;
+			currentPosition_Big = 0;
+			currentTower_Small = 2;
+			currentTower_Big = 2;
+			break;
+		case 6:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 3;
+			currentTower_Big = 2;
+			break;
+		case 7:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 1;
+			currentTower_Big = 3;
+			break;
+		case 8:
+			currentPosition_Small = 0;
+			currentPosition_Big = 0;
+			currentTower_Small = 2;
+			currentTower_Big = 3;
+			break;
+		case 9:
+			currentPosition_Small = 1;
+			currentPosition_Big = 0;
+			currentTower_Small = 3;
+			currentTower_Big = 3;
+			break;
+		default:
+			System.out.println("defaultDance.exe1");
 		}
 		// now we get next position.
 		switch (path.get(i + 1)) {
-			case 1:
-				nextPosition_Small = 1;
-				nextPosition_Big = 0;
-				nextTower_Small = 1;
-				nextTower_Big = 1;
-				break;
-			case 2:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 2;
-				nextTower_Big = 1;
-				break;
-			case 3:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 3;
-				nextTower_Big = 1;
-				break;
-			case 4:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 1;
-				nextTower_Big = 2;
-				break;
-			case 5:
-				nextPosition_Small = 1;
-				nextPosition_Big = 0;
-				nextTower_Small = 2;
-				nextTower_Big = 2;
-				break;
-			case 6:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 3;
-				nextTower_Big = 2;
-				break;
-			case 7:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 1;
-				nextTower_Big = 3;
-				break;
-			case 8:
-				nextPosition_Small = 0;
-				nextPosition_Big = 0;
-				nextTower_Small = 2;
-				nextTower_Big = 3;
-				break;
-			case 9:
-				nextPosition_Small = 1;
-				nextPosition_Big = 0;
-				nextTower_Small = 3;
-				nextTower_Big = 3;
-				break;
-			default:
-				System.out.println("defaultDance.exe2");
+		case 1:
+			nextPosition_Small = 1;
+			nextPosition_Big = 0;
+			nextTower_Small = 1;
+			nextTower_Big = 1;
+			break;
+		case 2:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 2;
+			nextTower_Big = 1;
+			break;
+		case 3:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 3;
+			nextTower_Big = 1;
+			break;
+		case 4:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 1;
+			nextTower_Big = 2;
+			break;
+		case 5:
+			nextPosition_Small = 1;
+			nextPosition_Big = 0;
+			nextTower_Small = 2;
+			nextTower_Big = 2;
+			break;
+		case 6:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 3;
+			nextTower_Big = 2;
+			break;
+		case 7:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 1;
+			nextTower_Big = 3;
+			break;
+		case 8:
+			nextPosition_Small = 0;
+			nextPosition_Big = 0;
+			nextTower_Small = 2;
+			nextTower_Big = 3;
+			break;
+		case 9:
+			nextPosition_Small = 1;
+			nextPosition_Big = 0;
+			nextTower_Small = 3;
+			nextTower_Big = 3;
+			break;
+		default:
+			System.out.println("defaultDance.exe2");
 
 		}
 
@@ -373,7 +383,9 @@ public class TowersFXMLController implements Initializable {
 		// hmmmm, who should we move you ask? well who ever's turn to move is now.
 		// to do that, see who has same value from current to next.
 
-		char currentlyMoving = (currentPosition_Small == nextPosition_Small && currentTower_Small == nextTower_Small) ? 'B' : 'S';
+		char currentlyMoving = (currentPosition_Small == nextPosition_Small && currentTower_Small == nextTower_Small)
+				? 'B'
+				: 'S';
 
 		int movementX = 111;
 		int movementY_BottomUp = -130;
@@ -382,13 +394,15 @@ public class TowersFXMLController implements Initializable {
 		PathTransition moveUpAnimation = new PathTransition();
 		moveUpAnimation.setNode(currentlyMoving == 'S' ? small_box_S : large_box_L);
 		if (currentlyMoving == 'S') { // so if the currently moving is the small disk we draw its path
-			moveUpAnimation.setPath(new Line(moveUpAnimation.getNode().getTranslateX() + 27.5, moveUpAnimation.getNode().getTranslateY() + 12.5,
-					moveUpAnimation.getNode().getTranslateX() + 27.5,
-					moveUpAnimation.getNode().getTranslateY() + 12.5 + (currentPosition_Small == 1 ? movementY_TopUp : movementY_BottomUp)));
+			moveUpAnimation.setPath(new Line(moveUpAnimation.getNode().getTranslateX() + 27.5,
+					moveUpAnimation.getNode().getTranslateY() + 12.5, moveUpAnimation.getNode().getTranslateX() + 27.5,
+					moveUpAnimation.getNode().getTranslateY() + 12.5
+							+ (currentPosition_Small == 1 ? movementY_TopUp : movementY_BottomUp)));
 		} else { // we draw the path of the large disk
-			moveUpAnimation.setPath(new Line(moveUpAnimation.getNode().getTranslateX() + 55, moveUpAnimation.getNode().getTranslateY() + 12.5,
-					moveUpAnimation.getNode().getTranslateX() + 55,
-					moveUpAnimation.getNode().getTranslateY() + 12.5 + (currentPosition_Big == 1 ? movementY_TopUp : movementY_BottomUp)));
+			moveUpAnimation.setPath(new Line(moveUpAnimation.getNode().getTranslateX() + 55,
+					moveUpAnimation.getNode().getTranslateY() + 12.5, moveUpAnimation.getNode().getTranslateX() + 55,
+					moveUpAnimation.getNode().getTranslateY() + 12.5
+							+ (currentPosition_Big == 1 ? movementY_TopUp : movementY_BottomUp)));
 		}
 		moveUpAnimation.setDuration(Duration.millis(1000));
 		moveUpAnimation.setOrientation(PathTransition.OrientationType.NONE);
@@ -401,14 +415,19 @@ public class TowersFXMLController implements Initializable {
 		sideAnimation.setDuration(Duration.millis(1000));
 		sideAnimation.setOrientation(PathTransition.OrientationType.NONE);
 
-		moveUpAnimation.setOnFinished(e -> { // after first animation finishes we draw the path of the secon animation and play it
+		moveUpAnimation.setOnFinished(e -> { // after first animation finishes we draw the path of the secon animation
+												// and play it
 			if (currentlyMoving == 'S') { // so if the currently moving is the small disk we draw its path
-				sideAnimation.setPath(new Line(sideAnimation.getNode().getTranslateX() + 27.5, sideAnimation.getNode().getTranslateY() + 12.5,
-						sideAnimation.getNode().getTranslateX() + 27.5 + (nextTower_Small - currentTower_Small) * movementX,
+				sideAnimation.setPath(new Line(sideAnimation.getNode().getTranslateX() + 27.5,
+						sideAnimation.getNode().getTranslateY() + 12.5,
+						sideAnimation.getNode().getTranslateX() + 27.5
+								+ (nextTower_Small - currentTower_Small) * movementX,
 						sideAnimation.getNode().getTranslateY() + 12.5));
 			} else { // we draw the path of the large disk
-				sideAnimation.setPath(new Line(sideAnimation.getNode().getTranslateX() + 55, sideAnimation.getNode().getTranslateY() + 12.5,
-						sideAnimation.getNode().getTranslateX() + 55 + (nextTower_Big - currentTower_Big) * movementX, sideAnimation.getNode().getTranslateY() + 12.5));
+				sideAnimation.setPath(new Line(sideAnimation.getNode().getTranslateX() + 55,
+						sideAnimation.getNode().getTranslateY() + 12.5,
+						sideAnimation.getNode().getTranslateX() + 55 + (nextTower_Big - currentTower_Big) * movementX,
+						sideAnimation.getNode().getTranslateY() + 12.5));
 			}
 			sideAnimation.play();
 		});
@@ -420,15 +439,18 @@ public class TowersFXMLController implements Initializable {
 		moveDownAnimation.setDuration(Duration.millis(1000));
 		moveDownAnimation.setOrientation(PathTransition.OrientationType.NONE);
 
-		sideAnimation.setOnFinished(e -> { // after first animation finishes we draw the path of the secon animation and play it
+		sideAnimation.setOnFinished(e -> { // after first animation finishes we draw the path of the secon animation and
+											// play it
 			if (currentlyMoving == 'S') { // so if the currently moving is the small disk we draw its path
-				moveDownAnimation.setPath(new Line(moveDownAnimation.getNode().getTranslateX() + 27.5, moveDownAnimation.getNode().getTranslateY() + 12.5,
-						moveDownAnimation.getNode().getTranslateX() + 27.5,
-						moveDownAnimation.getNode().getTranslateY() + 12.5 - (nextPosition_Small == 1 ? movementY_TopUp : movementY_BottomUp)));
+				moveDownAnimation.setPath(new Line(moveDownAnimation.getNode().getTranslateX() + 27.5,
+						moveDownAnimation.getNode().getTranslateY() + 12.5,
+						moveDownAnimation.getNode().getTranslateX() + 27.5, moveDownAnimation.getNode().getTranslateY()
+								+ 12.5 - (nextPosition_Small == 1 ? movementY_TopUp : movementY_BottomUp)));
 			} else { // we draw the path of the large disk
-				moveDownAnimation.setPath(new Line(moveDownAnimation.getNode().getTranslateX() + 55, moveDownAnimation.getNode().getTranslateY() + 12.5,
-						moveDownAnimation.getNode().getTranslateX() + 55,
-						moveDownAnimation.getNode().getTranslateY() + 12.5 - (nextPosition_Big == 1 ? movementY_TopUp : movementY_BottomUp)));
+				moveDownAnimation.setPath(new Line(moveDownAnimation.getNode().getTranslateX() + 55,
+						moveDownAnimation.getNode().getTranslateY() + 12.5,
+						moveDownAnimation.getNode().getTranslateX() + 55, moveDownAnimation.getNode().getTranslateY()
+								+ 12.5 - (nextPosition_Big == 1 ? movementY_TopUp : movementY_BottomUp)));
 			}
 			moveDownAnimation.play();
 		});
