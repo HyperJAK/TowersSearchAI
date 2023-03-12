@@ -1,11 +1,6 @@
 package com.searchai.towerssearchai;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.PriorityQueue;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
 
 public class Algorithms {
 
@@ -15,10 +10,8 @@ public class Algorithms {
 	// 1 that it chose from first row to get the new row that it will
 	// operate on and adds that last 1 to a path list so that if it comes again to
 	// it it skips it and takes another element
-	private static final int[][] fullMap = { { 0, 1, 1, 0, 0, 0, 0, 0, 0 }, { 1, 0, 1, 0, 0, 0, 0, 1, 0 },
-			{ 1, 1, 0, 0, 0, 1, 0, 0, 0 }, { 0, 0, 0, 0, 1, 1, 1, 0, 0 }, { 0, 0, 0, 1, 0, 1, 0, 0, 0 },
-			{ 0, 0, 1, 1, 1, 0, 0, 0, 0 }, { 0, 0, 0, 1, 0, 0, 0, 1, 1 }, { 0, 1, 0, 0, 0, 0, 1, 0, 1 },
-			{ 0, 0, 0, 0, 0, 0, 1, 1, 0 } };
+	private static final int[][] fullMap = {{0, 1, 1, 0, 0, 0, 0, 0, 0}, {1, 0, 1, 0, 0, 0, 0, 1, 0}, {1, 1, 0, 0, 0, 1, 0, 0, 0}, {0, 0, 0, 0, 1, 1, 1, 0, 0},
+			{0, 0, 0, 1, 0, 1, 0, 0, 0}, {0, 0, 1, 1, 1, 0, 0, 0, 0}, {0, 0, 0, 1, 0, 0, 0, 1, 1}, {0, 1, 0, 0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0, 1, 1, 0}};
 
 	/*
 	 * For thing u were saying for A*, I was doing this for best first but seems way
@@ -115,8 +108,7 @@ public class Algorithms {
 		 * corresponding heuristic value.
 		 */
 
-		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(
-				Comparator.comparingInt(integer -> heuristics[integer - 1]));
+		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> heuristics[integer - 1]));
 
 		if (startAt == goal) {
 			path.add(startAt);
@@ -155,7 +147,6 @@ public class Algorithms {
 		int[] heuristics = new int[9]; // {3, 2, 3, 2, 3, 3, 1, 1, 0};
 		initHeuristics(heuristics, goal);
 
-
 		// From state 1 to 9 these are the g costs for each node
 
 		int[] gCost = new int[9];
@@ -173,8 +164,7 @@ public class Algorithms {
 		}
 
 		// System.out.println(gCost[1]+" "+gCost[2]);
-		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(
-				Comparator.comparingInt(integer -> (heuristics[integer - 1] + gCost[integer - 1])));
+		PriorityQueue<Integer> stateChildren = new PriorityQueue<>(Comparator.comparingInt(integer -> (heuristics[integer - 1] + gCost[integer - 1])));
 
 		stateChildren.add(startAt + 1);
 
@@ -200,7 +190,7 @@ public class Algorithms {
 		return path; // now return the path.
 	}
 
-	private static void initHeuristics(int[] heuristics, int goal){
+	private static void initHeuristics(int[] heuristics, int goal) {
 		switch (goal) {
 			case 1 -> { // if goal is node 1
 				heuristics[0] = 0;
@@ -304,7 +294,7 @@ public class Algorithms {
 		}
 	}
 
-	private static void initGCost(int[] gCost, int startAt){
+	private static void initGCost(int[] gCost, int startAt) {
 		switch (startAt) {
 			case 1 -> { // if starting node is 1
 				gCost[0] = 0;
