@@ -1,13 +1,13 @@
 package com.searchai.towerssearchai;
 
+import java.io.IOException;
+import java.net.URL;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.net.URL;
 
 public class Main extends Application {
 	public static void main(String[] args) {
