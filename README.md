@@ -4,7 +4,7 @@ This is an AI project demonstrating uses of multiple search algorithms in order 
 Written in java
 
 Usage of pom plugin to make jar excecutable:
-
+```
 <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -25,6 +25,6 @@ Usage of pom plugin to make jar excecutable:
                     </execution>
                 </executions>
             </plugin>
-
+```
 
 Then do mvn clean then run app then do mvn install and done, also make sure to make a Main class and link it to the real program starting point
