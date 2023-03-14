@@ -232,7 +232,7 @@ public class Algorithms {
 				heuristics[3] = 0;
 				heuristics[4] = 1;
 				heuristics[5] = 1;
-				heuristics[6] = 7;//
+				heuristics[6] = 1;//
 				heuristics[7] = 2;
 				heuristics[8] = 2;
 			}
