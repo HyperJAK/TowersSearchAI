@@ -34,6 +34,14 @@
     -fx-min-height: 40px;
 }
 
+#play_animation_button {
+    -fx-background-image: url("play_button.png");
+    -fx-background-repeat: none;
+    -fx-background-size: cover;
+    -fx-min-width: 30px;
+    -fx-min-height: 40px;
+}
+
 .graphPane {
     -fx-background-color: rgba(255, 255, 255, 0.3);
 
