@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <StackPane xmlns:fx="http://javafx.com/fxml/1" fx:id="parent_main_scene" minHeight="500.0" minWidth="1000.0"
-           style="-fx-background-color: #007ACC;" xmlns="http://javafx.com/javafx/19"
+           style="-fx-background-color: #007ACC;" xmlns="http://javafx.com/javafx/11.0.14-internal"
            fx:controller="com.searchai.towerssearchai.TowersFXMLController">
     <children>
         <Pane fx:id="main_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
@@ -74,15 +74,16 @@
                         <DropShadow/>
                     </effect>
                 </ChoiceBox>
-                <Button id="left_transition_button" contentDisplay="CENTER" layoutX="243.0" layoutY="231.0"
-                        mnemonicParsing="false" prefHeight="40.0" prefWidth="41.0" stylesheets="@application.css"
-                        textAlignment="CENTER">
+                <Button id="left_transition_button" fx:id="left_arrow_button" contentDisplay="CENTER" disable="true"
+                        layoutX="229.0" layoutY="232.0" mnemonicParsing="false" onMouseReleased="#left_arrow_handler"
+                        prefHeight="40.0" prefWidth="41.0" stylesheets="@application.css" textAlignment="CENTER">
                     <effect>
                         <DropShadow/>
                     </effect>
                 </Button>
-                <Button id="right_transition_button" layoutX="319.0" layoutY="231.0" mnemonicParsing="false"
-                        prefHeight="40.0" prefWidth="41.0" stylesheets="@application.css" textAlignment="CENTER">
+                <Button id="right_transition_button" fx:id="right_arrow_button" disable="true" layoutX="333.0"
+                        layoutY="232.0" mnemonicParsing="false" onMouseReleased="#right_arrow_handler" prefHeight="40.0"
+                        prefWidth="41.0" stylesheets="@application.css" textAlignment="CENTER">
                     <effect>
                         <DropShadow/>
                     </effect>
@@ -101,8 +102,13 @@
                 <Text layoutX="72.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select an algorithm"/>
                 <Text layoutX="422.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0"
                       text="Target position (1-&gt;9)"/>
-                <Button fx:id="testButton" layoutX="513.0" layoutY="31.0" mnemonicParsing="false"
-                        onAction="#animationTest" text="TEST"/>
+                <Button id="play_animation_button" fx:id="testButton" disable="true" layoutX="282.0" layoutY="232.0"
+                        mnemonicParsing="false" onAction="#animationTest" prefHeight="40.0" prefWidth="41.0"
+                        stylesheets="@application.css" textAlignment="CENTER">
+                    <effect>
+                        <DropShadow/>
+                    </effect>
+                </Button>
             </children>
         </Pane>
         <Pane fx:id="graphPane" maxHeight="434.0" maxWidth="430.0" prefHeight="200.0" prefWidth="200.0"
