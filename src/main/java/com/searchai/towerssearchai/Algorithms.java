@@ -170,9 +170,6 @@ public class Algorithms {
 
 		while (!path.contains(goal)) {
 
-			System.out.println("path: " + path.toString());
-			System.out.println("state: " + stateChildren.toString() + "\n");
-
 			stateChildrenHead = stateChildren.poll();
 			if (path.contains(stateChildrenHead)) {
 				continue;
